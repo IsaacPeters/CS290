@@ -1,0 +1,22 @@
+all: Assign4Tester.exe Assign4Index.exe
+
+Assign4Tester.exe: Assign4Tester.o IndexMap.o IndexRecord.o
+	g++ --std=c++11 -o Assign4Tester.exe Assign4Tester.o
+	
+Assign4Index.exe: Assign4Index.o  IndexMap.o IndexRecord.o
+	g++ --std=c++11 -o Assign4Index.exe Assign4Index.o
+	
+Assign4Tester.o: tester.cpp
+	g++ tester.cpp --std=c++11 -c -o Assign4Tester.o
+	
+Assign4Index.o: indexBuilder.cpp
+	g++ indexBuilder.cpp --std=c++11 -c -o Assign4Index.o
+
+IndexMap.o: IndexMap.cpp
+	g++ IndexMap.cpp  --std=c++11 -c
+
+IndexRecord.o: indexRecord.cpp
+	g++ indexRecord.cpp --std=c++11 -c
+	
+clean: 
+	del Assign4Tester.exe Assign4Index.exe Assign4Tester.o Assign4Index.o IndexMap.o IndexRecord.o

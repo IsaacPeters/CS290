@@ -1,0 +1,22 @@
+all: Assign5Tester.exe Assign5Index.exe
+
+Assign5Tester.exe: Assign5Tester.o IndexMap.o IndexRecord.o
+	g++ --std=c++11 -o Assign5Tester.exe Assign5Tester.o IndexMap.o IndexRecord.o
+	
+Assign5Index.exe: Assign5Index.o  IndexMap.o IndexRecord.o
+	g++ --std=c++11 -o Assign5Index.exe Assign5Index.o IndexMap.o IndexRecord.o
+	
+Assign5Tester.o: tester.cpp
+	g++ tester.cpp --std=c++11 -c -o Assign5Tester.o
+	
+Assign5Index.o: indexBuilder.cpp
+	g++ indexBuilder.cpp --std=c++11 -c -o Assign5Index.o
+
+IndexMap.o: IndexMap.cpp
+	g++ IndexMap.cpp  --std=c++11 -c -o IndexMap.o
+
+IndexRecord.o: indexRecord.cpp
+	g++ indexRecord.cpp --std=c++11 -c -o indexRecord.o
+	
+clean: 
+	del Assign5Tester.exe Assign5Index.exe Assign5Tester.o Assign5Index.o IndexMap.o IndexRecord.o
