@@ -3,34 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <title>Assignment 1</title>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <section>
         <table>
+            <caption>This is my table!</caption>
             <thead>
                 <tr>
-                    <th>Column 1 heading</th>
+                    <th></th>
                     <th>Column 2 heading</th>
                     <th>Column 3 heading</th>
+                    <th>Column 4 heading</th>
+                    <th>Column 5 heading</th>
+                    <th>Column 6 heading</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Row 2, cell 1</td>
-                    <td colspan="2"><b>Row 2, cell 2, also spanning Row 2, cell 3</b></td>
+                    <th><em>Row Header 1</em></th>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                    <td>Data 5</td>
                 </tr>
                 <tr>
-                    <td rowspan="2">Row 3, cell 1, also spanning Row 4, cell 1</td>
-                    <td>Row 3, cell 2</td>
-                    <td>Row 3, cell 3</td>
+                    <th>Row Header 2</th>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                    <td>Data 5</td>
                 </tr>
                 <tr>
-                    <td>Row 4, cell 2</td>
-                    <td>Row 4, cell 3</td>
+                    <th>Row Header 3</th>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                    <td>Data 5</td>
+                </tr>
+                <tr>
+                    <th>Row Header 4</th>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                    <td>Data 5</td>
+                </tr>
+                <tr>
+                    <th>Row Header 5</th>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                    <td>Data 5</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Footer 1</th>
+                    <td colspan="4">Footer 2</td>
                 </tr>
             </tbody>
         </table>
+    </section>
+    <section>
+        <ul>
+            <li>first item</li>
+            <li>second item</li>
+            <li>third item</li>
+        </ul>
+    </section>
+    <section>
+        <div class="outer-content">
+            <div class="inner-content">
+                This is my div
+            </div>
+        </div>
+    </section>
+    <section>
+            <form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="get">
+                <fieldset>
+                    <legend>Some GET Data:</legend>
+                        <label>Text Here:
+                            <input type="text" name="text_input" size="30" maxlength="100">
+                        </label>
+                        <br />
+                        <label>Number Input:
+                            <input type="number" name="numerical_input" size="30" maxlength="100">
+                        </label>
+                        <br />
+                        <label>Password Input:
+                            <input type="password" name="password_input" size="30" maxlength="100">
+                        </label>
+                        <br />
+                        <p>Would you visit again?
+                            <br />
+                            <label>
+                                <input type="radio" name="candy" value="Snickers" />Snickers</label> <br />
+                            <label>
+                                <input type="radio" name="candy" value="Skittles" />Skittles</label> <br />
+                            <label>
+                                <input type="radio" name="candy" value="Mentos" />Mentos</label> <br />
+                        </p>
+                        <input type="submit" value="Submit!" />
+                </fieldset>
+            </form>
+    </section>
+    <section>
+
     </section>
 </body>
 </html>
