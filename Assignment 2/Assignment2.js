@@ -14,17 +14,25 @@ var automobiles = [
     new Automobile(2008, "Subaru", "Outback", "Wagon")
     ];
 
-function carPrinter (auto, doType=true) {
-    auto.forEach (function(auto) {
-        if (doType)
-            console.log (auto.year + " " + auto.make + " " + auto.model + " " + auto.type);
-        else {
-            console.log (auto.year + " " + auto.make + " " + auto.model);
-        }
-    })
-}
+// Automobile.prototype.logMe = function (auto, doType=true) {
+//     if (doType)
+//         console.log (auto.year + " " + auto.make + " " + auto.model + " " + auto.type);
+//     else {
+//         console.log (auto.year + " " + auto.make + " " + auto.model);
+//     }
+// };
 
-/*This function sorts arrays using an arbitrary comparator. You pass it a comparator and an array of objects appropriate for that comparator and it will return a new array which is sorted with the largest object in index 0 and the smallest in the last index*/
+Automobile.prototype.logMe = function (doType=true) {
+    if (doType)
+        console.log (this.year + " " + this.make + " " + this.model + " " + this.type);
+    else {
+        console.log (this.year + " " + this.make + " " + this.model);
+    }
+};
+
+Automobile.prototype.forEach = function (x) {
+    x();
+}
 
 var typeMap = new Map();
 //Roadster Pickup SUV Wagon is the order!
@@ -32,16 +40,6 @@ typeMap.set("Roadster", 3);
 typeMap.set("Pickup", 2);
 typeMap.set("SUV", 1);
 typeMap.set("Wagon", 0);
-
-
-/*A comparator takes two arguments and uses some algorithm to compare them. If the first argument is larger or greater than the 2nd it returns true, otherwise it returns false. Here is an example that works on integers*/
-function exComparator( int1, int2){
-    if (int1 > int2){
-        return true;
-    } else {
-        return false;
-    }
-}
 
 /*For all comparators if cars are 'tied' according to the comparison rules then the order of those 'tied' cars is not specified and either can come first*/
 
@@ -86,18 +84,21 @@ function typeComparator( auto1, auto2){
 
 automobiles.sort(yearComparator);
 
-console.log("\nThe cars sorted by year are: ");
-carPrinter(automobiles, false);
+console.log("\n*****\nThe cars sorted by year are: ");
+//Print Automobile
+for (i = 0; i < automobiles.length; i++) {
+    automobiles[i].logMe(true);
+}
 
 automobiles.sort(makeComparator);
-
 console.log("\nThe cars sorted by make are: ");
-carPrinter(automobiles, false);
+foreach(Automobile in automobiles) {
+    this.logMe(false);
+};
 
 automobiles.sort(typeComparator);
-
 console.log("\nThe cars sorted by type are: ");
-carPrinter(automobiles);
+//Print Automobile
 
 
 /*Your program should output the following to the console.log, including the opening and closing 5 stars. All values in parenthesis should be replaced with appropriate values. Each line is a seperate call to console.log.
