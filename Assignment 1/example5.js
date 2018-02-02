@@ -1,8 +1,7 @@
 function buildList(list) {
         var result = [];
         for (var i = 0; i < list.length; i++) {
-            var item = 'item' + list[i];
-            result.push( function(x) {return function() {alert(item + ' ' + list[x])} }(i) );
+            result.push( function(x) {return function() {console.log('item' + list[x] + ' ' + list[x])} }(i) );
         }
         return result;
     }
