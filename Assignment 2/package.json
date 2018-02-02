@@ -1,11 +1,11 @@
 {
-  "name": "test",
+  "name": "Assignment2",
   "version": "1.0.0",
   "description": "starting project for activites",
-  "main": "Test.js",
+  "main": "Assignment2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Isaac Peters",
   "license": "ISC"
 }
