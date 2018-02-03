@@ -14,14 +14,6 @@ var automobiles = [
     new Automobile(2008, "Subaru", "Outback", "Wagon")
     ];
 
-// Automobile.prototype.logMe = function (auto, doType=true) {
-//     if (doType)
-//         console.log (auto.year + " " + auto.make + " " + auto.model + " " + auto.type);
-//     else {
-//         console.log (auto.year + " " + auto.make + " " + auto.model);
-//     }
-// };
-
 Automobile.prototype.logMe = function (doType=true) {
     if (doType)
         console.log (this.year + " " + this.make + " " + this.model + " " + this.type);
@@ -30,12 +22,8 @@ Automobile.prototype.logMe = function (doType=true) {
     }
 };
 
-Automobile.prototype.forEach = function (x) {
-    x();
-}
-
+//Map out types for easier type sorting
 var typeMap = new Map();
-//Roadster Pickup SUV Wagon is the order!
 typeMap.set("Roadster", 3);
 typeMap.set("Pickup", 2);
 typeMap.set("SUV", 1);
@@ -84,21 +72,26 @@ function typeComparator( auto1, auto2){
 
 automobiles.sort(yearComparator);
 
-console.log("\n*****\nThe cars sorted by year are: ");
-//Print Automobile
-for (i = 0; i < automobiles.length; i++) {
-    automobiles[i].logMe(true);
-}
 
+//Sort Cars by Year
+console.log("\n*****\nThe cars sorted by year are: ");
+automobiles.forEach(function (i) {
+    i.logMe(false);
+});
+
+//Sort Cars by Make
 automobiles.sort(makeComparator);
 console.log("\nThe cars sorted by make are: ");
-foreach(Automobile in automobiles) {
-    this.logMe(false);
-};
+automobiles.forEach(function (i) {
+    i.logMe(false);
+});
 
+//Sort Cars by Type, print type as well
 automobiles.sort(typeComparator);
 console.log("\nThe cars sorted by type are: ");
-//Print Automobile
+automobiles.forEach(function (i) {
+    i.logMe(true);
+});
 
 
 /*Your program should output the following to the console.log, including the opening and closing 5 stars. All values in parenthesis should be replaced with appropriate values. Each line is a seperate call to console.log.
