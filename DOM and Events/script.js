@@ -3,7 +3,7 @@ var body = document.body;
 body.appendChild(table);
 
 var currentLocation = [0, 0];
-document.getElementById("00").style.borderStyle = "dotted";
+document.getElementById("00").style.borderWidth = "5px";
 
 //create buttons
 var left = document.createElement("button");
@@ -52,30 +52,30 @@ function buttonPressed(direction, location) {
     switch (direction) {
         case "left":
             if (location[0] > 0) {
-                document.getElementById(location[0] + "" + location[1]).style.borderStyle = "solid";
+                document.getElementById(location[0] + "" + location[1]).style.borderWidth = "3px";
                 location[0]--;
-                document.getElementById(location[0] + "" + location[1]).style.borderStyle = "dotted";
+                document.getElementById(location[0] + "" + location[1]).style.borderWidth = "5px";
             }
             break;
         case "right":
             if (location[0] < 3) {
-                document.getElementById(location[0] + "" + location[1]).style.borderStyle = "solid";
+                document.getElementById(location[0] + "" + location[1]).style.borderWidth = "3px";
                 location[0]++;
-                document.getElementById(location[0] + "" + location[1]).style.borderStyle = "dotted";
+                document.getElementById(location[0] + "" + location[1]).style.borderWidth = "5px";
             }
             break;
         case "up":
             if (location[1] > 0) {
-                document.getElementById(location[0] + "" + location[1]).style.borderStyle = "solid";
+                document.getElementById(location[0] + "" + location[1]).style.borderWidth = "3px";
                 location[1]--;
-                document.getElementById(location[0] + "" + location[1]).style.borderStyle = "dotted";
+                document.getElementById(location[0] + "" + location[1]).style.borderWidth = "5px";
             }
             break;
         case "down":
             if (location[1] < 2) {
-                document.getElementById(location[0] + "" + location[1]).style.borderStyle = "solid";
+                document.getElementById(location[0] + "" + location[1]).style.borderWidth = "3px";
                 location[1]++;
-                document.getElementById(location[0] + "" + location[1]).style.borderStyle = "dotted";
+                document.getElementById(location[0] + "" + location[1]).style.borderWidth = "5px";
             }
             break;
         case "mark":
