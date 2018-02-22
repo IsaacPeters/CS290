@@ -1,3 +1,18 @@
+:root {
+    --blue_dark: #0e1a40;
+    --blue: #222f5b;
+    --grey: #5d5d5d;
+    --brown: #946b2d;
+    --black: #000000;
+
+    --purple1: #8b8589;
+    --purple2: #989898;
+    --purple3: #838996;
+    --purple4: #979aaa;
+    --purple5: #4c516d;
+}
+
 .navbar {
-    background-color: #0e1a40;
+    background-color: var(--blue_dark);
+    
 }
