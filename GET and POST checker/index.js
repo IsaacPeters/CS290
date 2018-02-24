@@ -11,27 +11,31 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 1845);
 
-app.get('/',function(req,res){
+//GET request function
+function getRoute(req, res) {
     var parameters = [];
     for (var p in req.query) {
         parameters.push({'name':p,'value':req.query[p]});
     }
     var context = {};
     context.dataList = parameters;
-    res.render('get-loopback-improved', context);
-});
+    res.render('get-loopback', context);
+}
 
-app.post('/',function(req,res){
+//POST request function
+function postRoute(req, res) {
     var parameters = [];
     for (var p in req.body) {
         parameters.push({'name':p,'value':req.body[p]});
     }
 
-    console.log(parameters);
     var context = {};
     context.dataList = parameters;
     res.render('post-loopback', context);
-});
+}
+
+app.get('/', getRoute);
+app.post('/',postRoute);
 
 app.use(function(req,res){
     res.status(404);
