@@ -21,6 +21,16 @@ app.get('/',function(req,res){
     res.render('get-loopback-improved', context);
 });
 
+app.post('/',function(req,res){
+    var parameters = [];
+    for (var p in req.query) {
+        parameters.push({'name':p,'value':req.query[p]});
+    }
+    var context = {};
+    context.dataList = parameters;
+    res.render('post-loopback', context);
+});
+
 app.use(function(req,res){
     res.status(404);
     res.render('404');
