@@ -9,30 +9,30 @@ app.use(bodyParser.json());
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 3000);
+app.set('port', 6847);
 
 app.get('/',function(req,res){
-    res.type('text/plain');
-    res.send('Welcome to the main page!');
-  });
-  
-  app.get('/other-page',function(req,res){
-    res.type('text/plain');
-    res.send('Welcome to the other page!');
-  });  
+    var parameters = [];
+    for (var p in req.query) {
+        parameters.push({'name':p,'value':req.query[p]});
+    }
+    var context = {};
+    context.dataList = parameters;
+    res.render('get-loopback-improved', context);
+});
 
 app.use(function(req,res){
-  res.status(404);
-  res.render('404');
+    res.status(404);
+    res.render('404');
 });
 
 app.use(function(err, req, res, next){
-  console.error(err.stack);
-  res.type('plain/text');
-  res.status(500);
-  res.render('500');
+    console.error(err.stack);
+    res.type('plain/text');
+    res.status(500);
+    res.render('500');
 });
 
 app.listen(app.get('port'), function(){
-  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+    console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
