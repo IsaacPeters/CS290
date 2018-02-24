@@ -26,6 +26,8 @@ app.post('/',function(req,res){
     for (var p in req.body) {
         parameters.push({'name':p,'value':req.query[p]});
     }
+
+    console.log(parameters);
     var context = {};
     context.dataList = parameters;
     res.render('post-loopback', context);
