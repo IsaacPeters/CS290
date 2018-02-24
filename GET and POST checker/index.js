@@ -23,7 +23,7 @@ app.get('/',function(req,res){
 
 app.post('/',function(req,res){
     var parameters = [];
-    for (var p in req.query) {
+    for (var p in req.body) {
         parameters.push({'name':p,'value':req.query[p]});
     }
     var context = {};
