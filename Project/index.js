@@ -7,13 +7,25 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res) {
-    res.render('navbar');
-});
-
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 1845);
+
+app.get('/', function(req, res) {
+    res.render('home');
+});
+
+app.get('/about', function(req, res) {
+    res.render('about');
+});
+
+app.get('/resume', function(req, res) {
+    res.render('resume');
+});
+
+app.get('/gallery', function(req, res) {
+    res.render('gallery');
+});
 
 app.use(function(req,res){
     res.status(404);
