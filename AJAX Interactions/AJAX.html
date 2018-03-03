@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Interactions</title>
+</head>
+<body>
+    <script src="script1.js"></script>
+    <section>
+        <form>
+            <fieldset>
+                <legend>Open Weather Map</legend>
+                <label for="zipCode">Enter US Zipcode:</label>
+                <input type="text" name="zipCode" id="zipCode">
+                <input type="submit" id="weatherSubmit">
+            </fieldset>
+        </form>
+        <div>
+            <h2>Result</h2>
+            <ul>
+                <li><span>City Found: </span><span id="cityFound"></span></li>
+                <li><span>Temperature: </span><span id="temp"></span></li>
+                <li><span>Wind Speed: </span><span id="windSpeed"></span></li>
+            </ul>
+    </section>
+    <section>
+        <form>
+            <fieldset>
+                <legend>Open Weather Map</legend>
+                <label for="zipCode">Enter POST data:</label>
+                <input type="text" name="output" id="output">
+                <input type="submit" id="postSubmit">
+            </fieldset>
+        </form>
+        <div>
+            <h2>Result</h2>
+            <ul>
+                <li><span>Output from POST: </span><span id="postData"></span></li>
+            </ul>
+    </section>
+</body>
+</html>

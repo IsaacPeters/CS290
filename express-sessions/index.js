@@ -12,7 +12,7 @@ app.use(session({secret:'SuperSecret'}));
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 1845);
+app.set('port', 6875);
 
 //Utility Functions
 
@@ -46,30 +46,57 @@ app.post('/',function(req,res){
         req.session.name = req.body.name;
         req.session.toDo = [];
         req.session.curId = 0;
+        renderPage();
     }
 
     //If there is no session, go to the main page.
     if(!req.session.name){
         res.render('newUser', context);
-    return;
+        return;
     }
 
     if(req.body['Add Item']){
-        req.session.toDo.push({"name":req.body.name, "id":req.session.curId});
+        request('http://api.openweathermap.org/data/2.5/weather?zip=' + req.body.zip + ',us&units=imperial&APPID=' + 'ea86a4e01bf5414b259261012c1486c9', handleWeather);
+    }
+
+    function handleWeather(err, response, body) {
+        var weather = JSON.parse(body);
+        if (!err && response.statusCode < 400) {
+            if (weather.main.temp >= req.body.temp) {
+                
+                req.session.toDo.push({ "name":req.body.name, "id":req.session.curId, 
+                                        "zip":req.body.zip, "id":req.session.curId,
+                                        "temp":req.body.temp, "id":req.session.curId,
+                                        "statusColor":"green", "id":req.session.curId });
+            } else {
+                req.session.toDo.push({ "name":req.body.name, "id":req.session.curId, 
+                                        "zip":req.body.zip, "id":req.session.curId,
+                                        "temp":req.body.temp, "id":req.session.curId,
+                                        "statusColor":"red", "id":req.session.curId });
+            }
+        } else {
+            console.log(err);
+            console.log(response.statusCode);
+        }
+
         req.session.curId++;
+        renderPage();
     }
 
     if(req.body['Done']){
         req.session.toDo = req.session.toDo.filter(function(e){
             return e.id != req.body.id;
         })
+        renderPage();
     }
 
-    context.name = req.session.name;
-    context.toDoCount = req.session.toDo.length;
-    context.toDo = req.session.toDo;
-    console.log(context.toDo);
-    res.render('toDo',context);
+    function renderPage() {
+        context.name = req.session.name;
+        context.toDoCount = req.session.toDo.length;
+        context.toDo = req.session.toDo;
+        console.log(context.toDo);
+        res.render('toDo',context);
+    };
 });
 
 app.use(function(req,res){
