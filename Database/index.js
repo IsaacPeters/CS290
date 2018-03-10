@@ -12,11 +12,12 @@ app.get('/',function(req,res,next){
     var context = {};
     mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
         if(err){
+            console.log("ran into an error");
             next(err);
             return;
         }
         context.results = JSON.stringify(rows);
-        res.send(context);
+        res.render('home', context);
     });
 });
 

@@ -7,7 +7,7 @@ function bindButtons(){
         req.open('GET', 'http://localhost:6875/', false);
         req.send(null);
         var response = JSON.parse(req.responseText);
-        console.log(response);
+        console.log(req.responseText);
         event.preventDefault();
     })
 }
