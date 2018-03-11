@@ -8,6 +8,12 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 6875);
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.get('/',function(req,res,next){
     var context = {};
     mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
@@ -17,7 +23,8 @@ app.get('/',function(req,res,next){
             return;
         }
         context.results = JSON.stringify(rows);
-        res.render('home', context);
+        console.log("GET request recieved");
+        res.send(context);
     });
 });
 
@@ -29,7 +36,7 @@ app.get('/insert',function(req,res,next){
             return;
         }
         context.results = "Inserted id " + result.insertId;
-        res.render('home',context);
+        res.send("test");
     });
 });
 
