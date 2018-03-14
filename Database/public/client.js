@@ -108,12 +108,16 @@ function buildTable(queryData) {
     table = table.firstElementChild.firstElementChild;
 
     var dataNames = ["name", "reps", "weight", "date", "lbs"];
-    for (var i = 0; i < dataNames.length; i++) {
+    dataNames.forEach( function (element) {
+
         var newItem = document.createElement("th");
-        newItem.textContent = dataNames[i];
-        newItem.id = "H" + dataNames[i];
+        if (element === "lbs") {
+            element = "unit";
+        }
+        newItem.textContent = element;
+        newItem.id = "H" + element;
         table.appendChild(newItem);
-    };
+    });
     table = table.parentElement.parentElement;
 
     table.appendChild(document.createElement("tbody"));
@@ -125,8 +129,23 @@ function buildTable(queryData) {
 
             //Insert data from query
             dataNames.forEach(function (typeName) {
+                //Create an empty item to put stuff into
                 var newItem = document.createElement("td");
-                newItem.textContent = element[typeName];
+
+                if (element[typeName] != null) {
+                    if (typeName === "lbs") {
+                        if (element[typeName]) {
+                            newItem.textContent = "Pounds";
+                        } else {
+                            newItem.textContent = "Kilograms";
+                        }
+                    } else if (typeName === "date") {
+                        newItem.textContent = element[typeName].substring(0, 10);
+                    } else {
+                        newItem.textContent = element[typeName];
+                    }
+                } 
+                
                 row.appendChild(newItem);
             });
 
